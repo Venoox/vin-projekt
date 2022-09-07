@@ -1,0 +1,33 @@
+[package]
+name = "example"
+version = "0.1.0"
+authors = ["Tomaz Cuk <venooxpersonal@gmail.com>"]
+edition = "2021"
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[features]
+pio = ["esp-idf-sys/pio"]
+
+[dependencies]
+log = "0.4"
+url = "2"
+anyhow = {version = "1", features = ["backtrace"]}
+esp-idf-sys = { version = "0.31", features = ["binstart"] }
+esp-idf-svc = "0.42"
+esp-idf-hal = "0.38"
+embedded-svc = "0.22"
+embedded-hal = "0.2"
+embedded-graphics = "0.7"
+ssd1306 = "0.7"
+bme280 = { version = "0.2", features = ["serde"] }
+
+[build-dependencies]
+embuild = "0.30.3"
+anyhow = "1"
